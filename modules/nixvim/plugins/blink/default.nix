@@ -27,9 +27,13 @@
           menu.auto_show = true;
         };
         keymap = {
-          preset = "default";
-          "<Tab>" = [
-            "accept_and_enter"
+          preset = "none";
+          "<TAB>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<S-TAB" = [
+            "select_prev"
             "fallback"
           ];
         };
@@ -240,16 +244,11 @@
         #   "snippet_backward"
         #   "fallback"
         # ];
-        # "<Tab>" = [
-        #   "select_next"
-        #   "fallback"
-        # ];
         # "<S-Tab>" = [
         #   "select_prev"
         #   "fallback"
         # ];
       };
-
       signature = {
         enabled = true;
         window.border = "rounded";
