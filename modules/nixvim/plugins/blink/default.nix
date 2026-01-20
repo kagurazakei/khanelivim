@@ -22,20 +22,12 @@
       cmdline = {
         completion = {
           list.selection = {
-            preselect = false;
+            preselect = true;
           };
           menu.auto_show = true;
         };
         keymap = {
-          preset = "none";
-          "<TAB>" = [
-            "select_next"
-            "fallback"
-          ];
-          "<S-TAB" = [
-            "select_prev"
-            "fallback"
-          ];
+          preset = "default";
         };
       };
 
@@ -45,7 +37,7 @@
         };
 
         trigger = {
-          prefetch_on_insert = true;
+          prefetch_on_insert = false;
           show_on_backspace = true;
           # Disabled: Prefer manual completion control with <C-.>
           # Uncomment to auto-show after typing these characters:
@@ -244,11 +236,16 @@
         #   "snippet_backward"
         #   "fallback"
         # ];
+        # "<Tab>" = [
+        #   "select_next"
+        #   "fallback"
+        # ];
         # "<S-Tab>" = [
         #   "select_prev"
         #   "fallback"
         # ];
       };
+
       signature = {
         enabled = true;
         window.border = "rounded";
