@@ -27,8 +27,8 @@
           menu.auto_show = true;
         };
         keymap = {
-          preset = "enter";
-          "<CR>" = [
+          preset = "default";
+          "<Tab>" = [
             "accept_and_enter"
             "fallback"
           ];
