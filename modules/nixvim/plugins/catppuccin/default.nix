@@ -6,8 +6,8 @@
       # and better contrast selected tabs
       highlights =
         let
-          commonBgColor = "#363a4f";
-          commonFgColor = "#1e2030";
+          commonBgColor = "#1E1E2E";
+          commonFgColor = "#11121D";
 
           commonSelectedAttrs = {
             bg = commonBgColor;
@@ -72,7 +72,7 @@
         percentage = 0.25;
       };
 
-      flavour = "macchiato";
+      flavour = "mocha";
 
       integrations = {
         aerial = true;

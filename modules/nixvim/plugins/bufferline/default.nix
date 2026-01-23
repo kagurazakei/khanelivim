@@ -134,7 +134,7 @@
   keymaps = lib.mkIf config.plugins.bufferline.enable [
     {
       mode = "n";
-      key = "<leader>bP";
+      key = "<leader>sp";
       action = "<cmd>BufferLineTogglePin<cr>";
       options = {
         desc = "Pin buffer toggle";
@@ -142,7 +142,7 @@
     }
     {
       mode = "n";
-      key = "<leader>bp";
+      key = "<leader>sP";
       action = "<cmd>BufferLinePick<cr>";
       options = {
         desc = "Pick Buffer";
@@ -150,7 +150,7 @@
     }
     {
       mode = "n";
-      key = "<leader>bsd";
+      key = "<leader>sls";
       action = "<cmd>BufferLineSortByDirectory<cr>";
       options = {
         desc = "Sort By Directory";
@@ -158,7 +158,7 @@
     }
     {
       mode = "n";
-      key = "<leader>bse";
+      key = "<leader>sse";
       action = "<cmd>BufferLineSortByExtension<cr>";
       options = {
         desc = "Sort By Extension";
@@ -166,10 +166,26 @@
     }
     {
       mode = "n";
-      key = "<leader>bsr";
+      key = "<leader>ssr";
       action = "<cmd>BufferLineSortByRelativeDirectory<cr>";
       options = {
         desc = "Sort By Relative Directory";
+      };
+    }
+    {
+      mode = "n";
+      key = "<Tab>";
+      action = "<cmd>BufferLineCycleNext<cr>";
+      options = {
+        desc = "Cycle the bufferline";
+      };
+    }
+    {
+      mode = "n";
+      key = "<S-Tab>";
+      action = "<cmd>BufferLineCyclePrev<cr>";
+      options = {
+        desc = "Cycle the bufferline";
       };
     }
   ];

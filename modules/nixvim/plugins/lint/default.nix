@@ -3,8 +3,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   plugins = {
     lint = {
       enable = true;
@@ -12,39 +11,43 @@
       lazyLoad.settings.event = "DeferredUIEnter";
 
       lintersByFt = {
-        bash = [ "shellcheck" ];
-        c = [ "clangtidy" ];
-        cmake = [ "cmakelint" ];
-        cpp = [ "clangtidy" ];
+        bash = ["shellcheck"];
+        c = ["clangtidy"];
+        cmake = ["cmakelint"];
+        cpp = ["clangtidy"];
         # TODO:
         # cs = [ "sonarlint" ];
-        css = lib.mkIf (!config.plugins.lsp.servers.stylelint_lsp.enable) [ "stylelint" ];
-        fish = [ "fish" ];
+        css =
+          lib.mkIf (!config.plugins.lsp.servers.stylelint_lsp.enable)
+          ["stylelint"];
+        fish = ["fish"];
         # TODO:
         # fsharp = [ "" ];
-        gdscript = [ "gdlint" ];
-        go = [ "golangcilint" ];
-        html = [ "htmlhint" ];
-        java = [ "checkstyle" ];
-        javascript = lib.mkIf (!config.plugins.lsp.servers.biome.enable) [ "biomejs" ];
+        gdscript = ["gdlint"];
+        go = ["golangcilint"];
+        html = ["htmlhint"];
+        java = ["checkstyle"];
+        javascript =
+          lib.mkIf (!config.plugins.lsp.servers.biome.enable) ["biomejs"];
         # FIXME: removed from nixpkgs find altnerative
         # json = [ "jsonlint" ];
-        lua = [ "luacheck" ];
-        make = [ "checkmake" ];
-        markdown = [ "markdownlint" ];
-        nix = [
-          "deadnix"
-        ]
-        ++ lib.optionals (!config.plugins.lsp.servers.statix.enable) [ "statix" ];
-        python = [ "ruff" ];
-        rust = [ "clippy" ];
-        sh = [ "shellcheck" ];
-        sql = [ "sqlfluff" ];
-        swift = [ "swiftlint" ];
-        typescript = lib.mkIf (!config.plugins.lsp.servers.biome.enable) [ "biomejs" ];
+        lua = ["luacheck"];
+        make = ["checkmake"];
+        markdown = ["markdownlint"];
+        nix =
+          ["deadnix" "statix" "nixfmt"]
+          ++ lib.optionals (!config.plugins.lsp.servers.statix.enable)
+          ["statix"];
+        python = ["ruff"];
+        rust = ["clippy"];
+        sh = ["shellcheck"];
+        sql = ["sqlfluff"];
+        swift = ["swiftlint"];
+        typescript =
+          lib.mkIf (!config.plugins.lsp.servers.biome.enable) ["biomejs"];
         # TODO:
         # xml = [ "xmllint" ];
-        yaml = [ "yamllint" ];
+        yaml = ["yamllint"];
       };
 
       linters = {
@@ -55,8 +58,10 @@
         clippy.cmd = lib.getExe pkgs.rust-analyzer;
         cmakelint.cmd = lib.getExe' pkgs.cmake-format "cmake-lint";
         deadnix.cmd = lib.getExe pkgs.deadnix;
+        nixfmt.cmd = lib.getExe pkgs.nixfmt;
         # FIXME: fish broken darwin
-        fish.cmd = lib.mkIf pkgs.stdenv.hostPlatform.isLinux (lib.getExe pkgs.fish);
+        fish.cmd =
+          lib.mkIf pkgs.stdenv.hostPlatform.isLinux (lib.getExe pkgs.fish);
         gdlint.cmd = lib.getExe' pkgs.gdtoolkit_4 "gdlint";
         golangcilint.cmd = lib.getExe pkgs.golangci-lint;
         htmlhint.cmd = lib.getExe pkgs.htmlhint;

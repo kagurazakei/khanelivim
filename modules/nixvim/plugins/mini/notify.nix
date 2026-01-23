@@ -6,6 +6,7 @@
 
       modules = {
         notify = {
+          enable = true;
           # Configuration for mini.notify
           # Uses vim.notify() interface
         };

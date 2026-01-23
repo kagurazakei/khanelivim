@@ -1,5 +1,8 @@
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   cond.__raw = ''
     function()
       local cache = {}
@@ -18,17 +21,12 @@ let
       end
     end
   '';
-in
-{
+in {
   plugins.lualine = {
     enable = config.khanelivim.ui.statusline == "lualine";
 
     lazyLoad.settings = {
-      event = [
-        "VimEnter"
-        "BufReadPost"
-        "BufNewFile"
-      ];
+      event = ["VimEnter" "BufReadPost" "BufNewFile"];
       before.__raw = lib.mkIf config.plugins.lz-n.enable ''
         function()
           pcall(vim.cmd, "packadd copilot-lualine")
@@ -38,6 +36,11 @@ in
 
     settings = {
       options = {
+        component_separators = "";
+        section_separators = {
+          left = "";
+          right = "";
+        };
         disabled_filetypes = {
           __unkeyed-1 = "startify";
           __unkeyed-2 = "neo-tree";
@@ -54,6 +57,8 @@ in
           __unkeyed-13 = "dashboard";
           __unkeyed-14 = "snacks_dashboard";
           __unkeyed-15 = "AvanteSelectedFiles";
+          __unkeyed-16 = "NvimTree";
+          __unkeyed-17 = "snacks_dashboard";
           winbar = [
             "aerial"
             "dap-repl"
@@ -71,17 +76,14 @@ in
 
       # +-------------------------------------------------+
       # | A | B | C                             X | Y | Z |
-      # +-------------------------------------------------+
+      # +--------------------------------snacks_dashboard---------+
       sections = {
-        lualine_a = [ "mode" ];
-        lualine_b = [ "branch" ];
-        lualine_c = [
-          "filename"
-          "diff"
-        ];
+        lualine_a = ["mode"];
+        lualine_b = ["branch"];
+        lualine_c = ["filename" "diff"];
 
         lualine_x = [
-          { __raw = "Snacks.profiler.status()"; }
+          {__raw = "Snacks.profiler.status()";}
           {
             __unkeyed-1 = "diagnostics";
             # TODO: figure out how this works
@@ -92,18 +94,10 @@ in
             #   "nvim_workspace_diagnostic"
             # ];
             diagnostics_color = {
-              error = {
-                fg = "#ed8796";
-              };
-              warn = {
-                fg = "#eed49f";
-              };
-              info = {
-                fg = "#8aadf4";
-              };
-              hint = {
-                fg = "#a6da95";
-              };
+              error = {fg = "#ed8796";};
+              warn = {fg = "#eed49f";};
+              info = {fg = "#8aadf4";};
+              hint = {fg = "#a6da95";};
             };
             colored = true;
           }
@@ -204,12 +198,10 @@ in
           # NOTE: not high priority since i use bufferline now, but should fix left separator color
           {
             __unkeyed-1 = "buffers";
-            symbols = {
-              alternate_file = "";
-            };
+            symbols = {alternate_file = "";};
           }
         ];
-        lualine_z = [ "tabs" ];
+        lualine_z = ["tabs"];
       };
 
       winbar = {
