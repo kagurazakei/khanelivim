@@ -57,9 +57,12 @@
         };
     };
 
-    lualine.settings.options.theme = "catppuccin";
+    lualine.settings.options.theme = "tokyonight-moon";
   };
   colorschemes = {
+    oxocarbon = {
+      lazyLoad.enable = config.plugins.lz-n.enable;
+    };
     catppuccin = {
       lazyLoad.enable = config.plugins.lz-n.enable;
 
@@ -130,22 +133,10 @@
 
         show_end_of_buffer = true;
         term_colors = true;
-        transparent_background = true;
+        transparent_background = false;
       };
     };
 
-    base16 = {
-      lazyLoad.enable = config.plugins.lz-n.enable;
-      settings = {
-        telescope_borders = true;
-        dapui = false;
-        indentblankline = true;
-        ts_rainbow = true;
-      };
-    };
-    oxocarbon = {
-      lazyLoad.enable = config.plugins.lz-n.enable;
-    };
     tokyonight = {
       lazyLoad.enable = config.plugins.lz-n.enable;
       settings = {

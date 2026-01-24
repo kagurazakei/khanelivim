@@ -45,17 +45,6 @@
               height = 5;
               padding = 2;
             }
-            {
-              pane = 2;
-              icon = " ";
-              desc = "Browse Repo";
-              padding = 1;
-              key = "b";
-              action.__raw = ''
-                function()
-                  Snacks.gitbrowse()
-                end'';
-            }
 
             (lib.mkIf config.plugins.lazy.enable { section = "startup"; })
           ];
