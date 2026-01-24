@@ -3,7 +3,7 @@
   keymaps = lib.mkIf (config.khanelivim.editor.fileManager == "mini-files") [
     {
       mode = "n";
-      key = "<leader>-";
+      key = "<leader>E";
       action.__raw = "MiniFiles.open()";
       options = {
         desc = "Mini Files";

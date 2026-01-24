@@ -10,8 +10,8 @@
         ]
       );
       default = [
-        "helpview"
         "glow"
+        "helpview"
         "devdocs"
       ];
       description = "Documentation viewing plugins (can coexist)";

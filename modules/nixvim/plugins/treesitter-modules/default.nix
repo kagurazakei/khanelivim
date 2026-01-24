@@ -35,6 +35,7 @@
   config = lib.mkIf config.plugins.treesitter-modules.enable {
     extraPlugins = [
       config.plugins.treesitter-modules.package
+      config.plugins.rainbow-delimiters.package
     ];
 
     extraConfigLua = ''

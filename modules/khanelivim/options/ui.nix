@@ -9,7 +9,7 @@
           "mini-animate"
         ]
       );
-      default = "snacks";
+      default = "mini-animate";
       description = "Animation plugin for UI transitions (mutually exclusive)";
     };
 

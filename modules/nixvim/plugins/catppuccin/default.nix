@@ -2,8 +2,6 @@
 {
   plugins = {
     bufferline.settings = {
-      # NOTE: fixes colorscheme with transparent_background
-      # and better contrast selected tabs
       highlights =
         let
           commonBgColor = "#1E1E2E";
@@ -39,8 +37,8 @@
                 "hint_diagnostic_selected"
               ]
           );
+          # Merge the common selected attributes with the unique attributes
         in
-        # Merge the common selected attributes with the unique attributes
         selectedAttrsSet
         // {
           fill = {
@@ -61,78 +59,114 @@
 
     lualine.settings.options.theme = "catppuccin";
   };
+  colorschemes = {
+    catppuccin = {
+      lazyLoad.enable = config.plugins.lz-n.enable;
 
-  colorschemes.catppuccin = {
-    lazyLoad.enable = config.plugins.lz-n.enable;
+      settings = {
+        default_integrations = true;
+        dim_inactive = {
+          enabled = false;
+          percentage = 0.25;
+        };
 
-    settings = {
-      default_integrations = true;
-      dim_inactive = {
-        enabled = false;
-        percentage = 0.25;
+        flavour = "mocha";
+
+        integrations = {
+          aerial = true;
+          cmp = true;
+          dap = {
+            enabled = true;
+            enable_ui = true;
+          };
+          dap_ui = true;
+          diffview = true;
+          fidget = true;
+          gitsigns = true;
+          harpoon = true;
+          headlines = true;
+          hop = true;
+          leap = true;
+          lsp_trouble = true;
+          markdown = true;
+          mason = true;
+          mini.enabled = true;
+
+          native_lsp = {
+            enabled = true;
+            virtual_text = {
+              errors = [ "italic" ];
+              hints = [ "italic" ];
+              warnings = [ "italic" ];
+              information = [ "italic" ];
+            };
+            underlines = {
+              errors = [ "underline" ];
+              hints = [ "underline" ];
+              warnings = [ "underline" ];
+              information = [ "underline" ];
+            };
+            inlay_hints = {
+              background = true;
+            };
+          };
+          navic = {
+            enabled = true;
+          };
+          neogit = true;
+          neotree = false;
+          neotest = true;
+          noice = true;
+          notify = true;
+          overseer = true;
+          rainbow_delimiters = true;
+          sandwich = true;
+          semantic_tokens = true;
+          symbols_outline = true;
+          treesitter = true;
+          ufo = true;
+          which_key = true;
+        };
+
+        show_end_of_buffer = true;
+        term_colors = true;
+        transparent_background = true;
       };
+    };
 
-      flavour = "mocha";
-
-      integrations = {
-        aerial = true;
-        cmp = true;
-        dap = {
-          enabled = true;
-          enable_ui = true;
-        };
-        dap_ui = true;
-        diffview = true;
-        fidget = true;
-        gitsigns = true;
-        harpoon = true;
-        headlines = true;
-        hop = true;
-        leap = true;
-        lsp_trouble = true;
-        markdown = true;
-        mason = true;
-        mini.enabled = true;
-
-        native_lsp = {
-          enabled = true;
-          virtual_text = {
-            errors = [ "italic" ];
-            hints = [ "italic" ];
-            warnings = [ "italic" ];
-            information = [ "italic" ];
-          };
-          underlines = {
-            errors = [ "underline" ];
-            hints = [ "underline" ];
-            warnings = [ "underline" ];
-            information = [ "underline" ];
-          };
-          inlay_hints = {
-            background = true;
-          };
-        };
-        navic = {
-          enabled = true;
-        };
-        neogit = true;
-        neotree = false;
-        neotest = true;
-        noice = true;
-        notify = true;
-        overseer = true;
-        rainbow_delimiters = true;
-        sandwich = true;
-        semantic_tokens = true;
-        symbols_outline = true;
-        treesitter = true;
-        ufo = true;
-        which_key = true;
+    base16 = {
+      lazyLoad.enable = config.plugins.lz-n.enable;
+      settings = {
+        telescope_borders = true;
+        dapui = false;
+        indentblankline = true;
+        ts_rainbow = true;
       };
-
-      show_end_of_buffer = true;
-      term_colors = true;
-      transparent_background = true;
+    };
+    oxocarbon = {
+      lazyLoad.enable = config.plugins.lz-n.enable;
+    };
+    tokyonight = {
+      lazyLoad.enable = config.plugins.lz-n.enable;
+      settings = {
+        style = "moon";
+        default_integrations = true;
+        transparent = false;
+        terminal_colors = true;
+        styles = {
+          comments.italic = true;
+          keywords.italic = true;
+          functions = { };
+          variables = { };
+          sidebars = "dark";
+          floats = "dark";
+        };
+        hide_inactive_statusline = false;
+        dim_inactive = false;
+        lualine_bold = false;
+        on_colors = "function(colors) end";
+        on_highlights = "function(highlights, colors) end";
+      };
     };
   };
 }

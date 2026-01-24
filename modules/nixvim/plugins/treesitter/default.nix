@@ -4,7 +4,6 @@
   ...
 }:
 {
-
   # Home manager injections
   extraFiles = lib.mkIf config.plugins.treesitter.nixvimInjections {
     "after/queries/nix/injections.scm".source = ./injections-hm.scm;
@@ -17,7 +16,6 @@
       folding.enable = true;
       highlight.enable = true;
       indent.enable = true;
-
       grammarPackages =
         if config.khanelivim.performance.treesitter.whitelistMode then
           lib.filter (
