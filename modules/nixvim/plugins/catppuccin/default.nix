@@ -125,7 +125,7 @@
           rainbow_delimiters = true;
           sandwich = true;
           semantic_tokens = true;
-          symbols_outline = true;
+          symbols_outline = false;
           treesitter = true;
           ufo = true;
           which_key = true;

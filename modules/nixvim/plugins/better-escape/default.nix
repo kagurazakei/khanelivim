@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   plugins.better-escape = {
     enable = true;
 
@@ -11,6 +10,7 @@
     };
     settings = {
       timeout = "vim.o.timeoutlen";
+
       mapping = {
         i." "."<tab>".__raw = ''
           function()
@@ -25,5 +25,4 @@
       };
     };
   };
-
 }

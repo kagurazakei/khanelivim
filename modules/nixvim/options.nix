@@ -6,7 +6,7 @@
     register = "unnamedplus";
   };
 
-  colorscheme = "oxocarbon";
+  colorscheme = "tokyonight";
   colorschemes = {
     tokyonight.enable = true;
     oxocarbon.enable = true;
@@ -85,7 +85,6 @@
 
     # Mouse
     mouse = "a";
-    mousemodel = "extend"; # Right-click extends selection
 
     # Search
     incsearch = true;
