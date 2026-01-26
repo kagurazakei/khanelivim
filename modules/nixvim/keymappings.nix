@@ -126,7 +126,7 @@
                   expr = true;
                 };
               };
-              "<Leader>q" = {
+              "<Leader>qi" = {
                 action = "<Cmd>confirm q<CR>";
                 options = {
                   desc = "Quit";
