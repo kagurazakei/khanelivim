@@ -57,7 +57,7 @@
         };
     };
 
-    lualine.settings.options.theme = "tokyonight-moon";
+    lualine.settings.options.theme = "auto";
   };
   colorschemes = {
     oxocarbon = {

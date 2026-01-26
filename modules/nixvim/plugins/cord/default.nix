@@ -9,7 +9,6 @@ _: {
     settings = {
       display = {
         theme = "catppuccin";
-        flavor = "mocha";
       };
       editor.tooltip = "Neovim";
       timestamp.reset_on_idle = true;

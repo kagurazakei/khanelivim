@@ -69,7 +69,7 @@
         "noice"
         "snacks"
       ];
-      default = "noice";
+      default = "mini-notify";
       description = "Notification system to use (mutually exclusive)";
     };
 
