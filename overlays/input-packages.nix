@@ -8,7 +8,7 @@ let
       allowAliases = false;
     };
   };
-  # my-packages = flake.packages.${prev.stdenv.system};
+  #   my-packages = flake.packages.${prev.stdenv.system};
   inherit (nixpkgs-master-packages) luaPackages vimPlugins;
 in
 {
