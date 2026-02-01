@@ -68,7 +68,7 @@
     }
     {
       mode = "n";
-      key = "<leader>uac";
+      key = "<leader>uau";
       action.__raw = ''
         function()
           local animate = require('mini.animate')

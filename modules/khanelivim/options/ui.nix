@@ -91,7 +91,7 @@
           "noice"
         ]
       );
-      default = "snacks";
+      default = "noice";
       description = "Rename popup UI provider to use";
     };
 
@@ -127,7 +127,7 @@
         "nord"
         "tokyonight"
       ];
-      default = "catppuccin";
+      default = "tokyonight";
       description = "Colorscheme/theme to use";
     };
 

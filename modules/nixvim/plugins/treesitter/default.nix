@@ -17,7 +17,6 @@
       folding.enable = true;
       highlight.enable = true;
       indent.enable = true;
-
       grammarPackages =
         if config.khanelivim.performance.treesitter.whitelistMode then
           lib.filter (

@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 {
   plugins.blink-indent = {
     enable = config.khanelivim.ui.indentGuides == "blink-indent";
@@ -9,11 +13,25 @@
         "BufNewFile"
       ];
     };
-
     settings = {
+      scope.underline.enable = true;
+      scope.highlights = [
+        "BlinkIndentRed"
+        "BlinkIndentOrange"
+        "BlinkIndentYellow"
+        "BlinkIndentGreen"
+      ];
+      static = {
+        char = "|";
+        highlights = [
+          "BlinkIndentRed"
+          "BlinkIndentOrange"
+          "BlinkIndentYellow"
+          "BlinkIndentCyan"
+        ];
+      };
     };
   };
-
   keymaps = lib.optionals config.plugins.blink-indent.enable [
     {
       mode = "n";

@@ -25,7 +25,7 @@
     disable_diagnostics = false;
     disable_autoformat = false;
     spell_enabled = true;
-    colorizing_enabled = false;
+    colorizing_enabled = true;
     first_buffer_opened = false;
     whitespace_character_enabled = false;
   };
@@ -47,7 +47,7 @@
     cursorline = true;
     cursorcolumn = false;
     signcolumn = "yes";
-    colorcolumn = "100";
+    colorcolumn = "80";
     laststatus = 3; # Global statusline
     showtabline = 2;
     showmode = false;
@@ -62,7 +62,6 @@
 
     # Mouse
     mouse = "a";
-    mousemodel = "extend"; # Right-click extends selection
 
     # Search
     incsearch = true;
@@ -86,7 +85,7 @@
     tabstop = 2;
     shiftwidth = 2;
     expandtab = true;
-    autoindent = true;
+    smartindent = true;
     breakindent = true;
     copyindent = true;
     preserveindent = true;
@@ -99,24 +98,6 @@
     foldenable = true;
     foldlevelstart = -1; # -1 uses foldlevel value
     # foldtext = ""; # Empty uses builtin foldtext
-    fillchars = {
-      horiz = "━";
-      horizup = "┻";
-      horizdown = "┳";
-      vert = "┃";
-      vertleft = "┫";
-      vertright = "┣";
-      verthoriz = "╋";
-
-      eob = " ";
-      diff = "╱";
-
-      fold = " ";
-      foldopen = "";
-      foldclose = "";
-
-      msgsep = "‾";
-    };
 
     # Completion & Popup
     pumheight = 10; # Max popup menu items

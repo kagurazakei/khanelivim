@@ -34,14 +34,6 @@
               '';
             }
             {
-              pane = 2;
-              section = "terminal";
-              cmd = "colorscript -e square";
-              height = 5;
-              padding = 2;
-            }
-
-            {
               icon = " ";
               title = "Keymaps";
               section = "keys";
@@ -54,6 +46,13 @@
               section = "projects";
               gap = 1;
               padding = 1;
+            }
+            {
+              pane = 2;
+              section = "terminal";
+              cmd = "colorscript -e square";
+              height = 5;
+              padding = 2;
             }
             {
               pane = 2;

@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   ...
 }:
 {
@@ -9,27 +8,42 @@
     ./packages.nix
     ./sources.nix
   ];
-
   plugins.blink-cmp = {
     enable = config.khanelivim.completion.tool == "blink";
-
     lazyLoad.settings.event = [
       "InsertEnter"
       "CmdlineEnter"
     ];
-
     settings = {
       cmdline = {
         completion = {
           list.selection = {
-            preselect = false;
+            preselect = true;
           };
           menu.auto_show = true;
         };
         keymap = {
-          preset = "enter";
+          preset = "super-tab";
+          "<Up>" = [
+            "select_prev"
+            "fallback"
+          ];
+          "<Down>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<Tab>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<S-Tab>" = [
+            "select_prev"
+            "fallback"
+          ];
+          "<C-y>" = [ "select_and_accept" ];
           "<CR>" = [
-            "accept_and_enter"
+            "select_and_accept"
+            "accept"
             "fallback"
           ];
         };
@@ -41,7 +55,7 @@
         };
 
         trigger = {
-          prefetch_on_insert = true;
+          prefetch_on_insert = false;
           show_on_backspace = true;
           # Disabled: Prefer manual completion control with <C-.>
           # Uncomment to auto-show after typing these characters:
@@ -61,7 +75,7 @@
             ];
             nix = [
               "{"
-              "}"
+              "};"
             ];
           };
         };
@@ -73,7 +87,7 @@
         };
 
         list.selection = {
-          auto_insert = false;
+          auto_insert = true;
           preselect = false;
         };
 
@@ -183,86 +197,40 @@
 
       keymap = {
         preset = "enter";
-        "<C-.>" = [
-          "show"
-          "show_documentation"
-          "hide_documentation"
+        "<Up>" = [
+          "select_prev"
+          "fallback"
         ];
-        "<A-1>" = [ { __raw = "function(cmp) cmp.accept({ index = 1 }) end"; } ];
-        "<A-2>" = [ { __raw = "function(cmp) cmp.accept({ index = 2 }) end"; } ];
-        "<A-3>" = [ { __raw = "function(cmp) cmp.accept({ index = 3 }) end"; } ];
-        "<A-4>" = [ { __raw = "function(cmp) cmp.accept({ index = 4 }) end"; } ];
-        "<A-5>" = [ { __raw = "function(cmp) cmp.accept({ index = 5 }) end"; } ];
-        "<A-6>" = [ { __raw = "function(cmp) cmp.accept({ index = 6 }) end"; } ];
-        "<A-7>" = [ { __raw = "function(cmp) cmp.accept({ index = 7 }) end"; } ];
-        "<A-8>" = [ { __raw = "function(cmp) cmp.accept({ index = 8 }) end"; } ];
-        "<A-9>" = [ { __raw = "function(cmp) cmp.accept({ index = 9 }) end"; } ];
-        "<A-0>" = [ { __raw = "function(cmp) cmp.accept({ index = 10 }) end"; } ];
-        "<C-y>" =
-          lib.optionals config.plugins.sidekick.enable [
-            {
-              __raw = ''
-                function()
-                  return require("sidekick").nes_jump_or_apply()
-                end
-              '';
-            }
-          ]
-          ++ lib.optionals config.plugins.copilot-lua.enable [
-            {
-              __raw = ''
-                function(cmp)
-                  if vim.b[vim.api.nvim_get_current_buf()].nes_state then
-                    cmp.hide()
-                    return (
-                      require("copilot-lsp.nes").apply_pending_nes()
-                      and require("copilot-lsp.nes").walk_cursor_end_edit()
-                    )
-                  end
-                  if cmp.snippet_active() then
-                    return cmp.accept()
-                  else
-                    return cmp.select_and_accept()
-                  end
-                end
-              '';
-            }
-          ]
-          ++ [ "fallback" ];
-
-        # NOTE: If you prefer Tab/S-Tab selection
-        # But, find myself accidentally interrupting tabbing for movement
-        # "<A-Tab>" = [
-        #   "snippet_forward"
-        #   "fallback"
-        # ];
-        # "<A-S-Tab>" = [
-        #   "snippet_backward"
-        #   "fallback"
-        # ];
-        # "<Tab>" = [
-        #   "select_next"
-        #   "fallback"
-        # ];
-        # "<S-Tab>" = [
-        #   "select_prev"
-        #   "fallback"
-        # ];
+        "<Down>" = [
+          "select_next"
+          "fallback"
+        ];
+        "<Tab>" = [
+          "select_next"
+          "fallback"
+        ];
+        "<S-Tab>" = [
+          "select_prev"
+          "fallback"
+        ];
+        "<C-y>" = [ "select_and_accept" ];
+        "<CR>" = [
+          "select_and_accept"
+          "accept"
+          "fallback"
+        ];
       };
-
       signature = {
         enabled = true;
         window.border = "rounded";
       };
-
-      snippets.preset = "mini_snippets";
     };
   };
 
   keymaps = [
     {
       mode = "n";
-      key = "<leader>uca";
+      key = "<leader>uo";
       action.__raw = ''
         function()
           -- vim.b.completion is nil by default (enabled), false = disabled
@@ -279,7 +247,7 @@
     }
     {
       mode = "n";
-      key = "<leader>uci";
+      key = "<leader>uoi";
       action.__raw = ''
         function()
           vim.g.blink_show_item_idx = not vim.g.blink_show_item_idx
@@ -290,7 +258,7 @@
     }
     {
       mode = "n";
-      key = "<leader>ucp";
+      key = "<leader>uop";
       action.__raw = ''
         function()
           vim.g.blink_path_from_cwd = not vim.g.blink_path_from_cwd
@@ -301,7 +269,7 @@
     }
     {
       mode = "n";
-      key = "<leader>ucb";
+      key = "<leader>uob";
       action.__raw = ''
         function()
           vim.g.blink_buffer_all_buffers = not vim.g.blink_buffer_all_buffers
