@@ -9,7 +9,7 @@
           "mini-animate"
         ]
       );
-      default = "mini-animate";
+      default = "snacks";
       description = "Animation plugin for UI transitions (mutually exclusive)";
     };
 
@@ -69,7 +69,7 @@
         "noice"
         "snacks"
       ];
-      default = "mini-notify";
+      default = "noice";
       description = "Notification system to use (mutually exclusive)";
     };
 
@@ -119,6 +119,16 @@
       );
       default = [ "snacks" ];
       description = "Terminal emulator plugins to use (can have multiple)";
+    };
+
+    theme = lib.mkOption {
+      type = lib.types.enum [
+        "catppuccin"
+        "nord"
+        "tokyonight"
+      ];
+      default = "catppuccin";
+      description = "Colorscheme/theme to use";
     };
 
     zenMode = lib.mkOption {

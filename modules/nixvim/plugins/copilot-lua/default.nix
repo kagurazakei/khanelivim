@@ -26,7 +26,7 @@
           enabled = true;
           keymap = {
             accept_and_goto = "<TAB>";
-            accept = true;
+            accept = false;
             dismiss = "<Esc>";
           };
         };
@@ -35,7 +35,7 @@
           enabled = true;
           auto_trigger = true;
           keymap = {
-            accept = "<TAB>";
+            accept = "<C-y>";
             accept_word = "<M-w>";
             accept_line = "<M-e>";
             next = "<M-]>";

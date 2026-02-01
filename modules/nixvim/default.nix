@@ -1,8 +1,4 @@
-{
-  lib,
-  self,
-  ...
-}:
+{ lib, self, ... }:
 let
   inherit (builtins) readDir;
   inherit (lib.attrsets) foldlAttrs;

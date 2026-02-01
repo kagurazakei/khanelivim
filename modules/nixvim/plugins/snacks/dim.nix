@@ -7,7 +7,6 @@
   plugins = {
     snacks = {
       settings = {
-        nerdy.enable = true;
         dim.enabled = true;
       };
     };

@@ -20,46 +20,40 @@
         event = "BufEnter";
         pattern = [ "*" ];
         callback.__raw = ''
-                  function()
-                    local buf_size_limit = 1024 * 1024 -- 1MB size limit
-                    if vim.api.nvim_buf_get_offset(0, vim.api.nvim_buf_line_count(0)) > buf_size_limit then
-                      ${lib.optionalString config.plugins.mini-indentscope.enable "vim.b.miniindentscope_disable = true"}
-                      ${lib.optionalString config.plugins.blink-indent.enable "vim.b.indent_guide = false"}
-                      ${lib.optionalString (
-                        config.plugins.snacks.enable && config.plugins.snacks.settings.indent.enabled
-                      ) "vim.b.snacks_indent = false"}
+          function()
+            local buf_size_limit = 1024 * 1024 -- 1MB size limit
+            if vim.api.nvim_buf_get_offset(0, vim.api.nvim_buf_line_count(0)) > buf_size_limit then
+              ${lib.optionalString config.plugins.mini-indentscope.enable "vim.b.miniindentscope_disable = true"}
+              ${lib.optionalString config.plugins.blink-indent.enable "vim.b.indent_guide = false"}
+              ${lib.optionalString (
+                config.plugins.snacks.enable && config.plugins.snacks.settings.indent.enabled
+              ) "vim.b.snacks_indent = false"}
 
-                      -- Disable line numbers and relative line numbers
-                      vim.cmd("setlocal nonumber norelativenumber")
+              -- Disable line numbers and relative line numbers
+              vim.cmd("setlocal nonumber norelativenumber")
 
-                      -- Disable syntax highlighting
-                      -- vim.cmd("syntax off")
-                        vim.api.nvim_create_autocmd("TextYankPost", {
-            pattern = "*",
-            callback = function()
-              vim.highlight.on_yank { timeout = 500 }
-            end,
-          })
+              -- Disable syntax highlighting
+              -- vim.cmd("syntax off")
 
-                      -- Disable matchparen
-                      vim.cmd("let g:loaded_matchparen = 1")
+              -- Disable matchparen
+              vim.cmd("let g:loaded_matchparen = 1")
 
-                      -- Disable cursor line and column
-                      vim.cmd("setlocal nocursorline nocursorcolumn")
+              -- Disable cursor line and column
+              vim.cmd("setlocal nocursorline nocursorcolumn")
 
-                      -- Disable folding
-                      vim.cmd("setlocal nofoldenable")
+              -- Disable folding
+              vim.cmd("setlocal nofoldenable")
 
-                      -- Disable sign column
-                      vim.cmd("setlocal signcolumn=no")
+              -- Disable sign column
+              vim.cmd("setlocal signcolumn=no")
 
-                      -- Disable swap file and undo file
-                      vim.cmd("setlocal noswapfile noundofile")
+              -- Disable swap file and undo file
+              vim.cmd("setlocal noswapfile noundofile")
 
-                      -- Disable mini animate
-                      vim.b.minianimate_disable = true
-                    end
-                  end
+              -- Disable mini animate
+              vim.b.minianimate_disable = true
+            end
+          end
         '';
       }
     )

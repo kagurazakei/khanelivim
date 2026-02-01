@@ -9,6 +9,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
     # Applications & packages
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -20,7 +21,6 @@
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
   };
 
   nixConfig = {
@@ -35,9 +35,8 @@
     allow-import-from-derivation = false;
   };
 
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "aarch64-linux"
         "x86_64-linux"

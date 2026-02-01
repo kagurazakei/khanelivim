@@ -3,12 +3,15 @@ _final: prev:
 let
   nixpkgs-master-packages = import flake.inputs.nixpkgs-master {
     inherit (prev.stdenv) system;
+    overlays = [
+      flake.inputs.neovim-nightly-overlay.overlays.default
+    ];
     config = {
       allowUnfree = true;
       allowAliases = false;
     };
   };
-  #   my-packages = flake.packages.${prev.stdenv.system};
+  nvim = flake.neovim-nightly-overlay.packages.${prev.stdenv.system};
   inherit (nixpkgs-master-packages) luaPackages vimPlugins;
 in
 {
@@ -16,6 +19,8 @@ in
     claude-code
     github-copilot-cli
     opencode
+    # TODO: Remove after hitting channel
+    swift
     ;
 
   luaPackages = luaPackages // {

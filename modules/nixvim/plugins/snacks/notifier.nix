@@ -3,7 +3,7 @@
   plugins = {
     snacks = {
       settings = {
-        notify = {
+        notifier = {
           enabled = config.khanelivim.ui.notifications == "snacks";
 
           style = "fancy"; # "compact" | "fancy" | "minimal"

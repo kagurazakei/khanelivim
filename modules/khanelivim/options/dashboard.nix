@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   options.khanelivim.dashboard = {
     tool = lib.mkOption {
       type = lib.types.nullOr (

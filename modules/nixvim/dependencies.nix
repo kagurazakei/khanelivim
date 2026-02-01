@@ -6,20 +6,20 @@
 {
   extraLuaPackages =
     ps:
-    lib.optionals (
-      # Plugins with known tiktoken_core usage
-      config.plugins.copilot-lua.enable
-      || config.plugins.copilot-chat.enable
-      || config.plugins.avante.enable
-      # Plugins with chat/session features that could benefit
-      || config.plugins.codecompanion.enable
-      || config.plugins.sidekick.enable
-      || config.plugins.claude-code.enable
-      || config.plugins.claudecode.enable
-      || config.plugins.opencode.enable
-      || config.plugins.nerdy.enable
-      || config.plugins.telescope.enable
-      || config.plugins.rainbow.enable
-      || config.plugins.rainbow-delimiters.enable
-    ) [ ps.tiktoken_core ];
+    lib.optionals
+      (
+        # Plugins with known tiktoken_core usage
+        config.plugins.copilot-lua.enable
+        || config.plugins.copilot-chat.enable
+        || config.plugins.avante.enable
+        # Plugins with chat/session features that could benefit
+        || config.plugins.codecompanion.enable
+        || config.plugins.sidekick.enable
+        || config.plugins.claude-code.enable
+        || config.plugins.claudecode.enable
+        || config.plugins.opencode.enable
+      )
+      [
+        ps.tiktoken_core
+      ];
 }

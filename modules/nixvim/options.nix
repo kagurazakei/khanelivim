@@ -1,4 +1,8 @@
-{ lib, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   # Note: The basic clipboard setup below is overridden by vim.g.clipboard in globals
   # to add timeout wrappers that prevent wl-copy from freezing Neovim
@@ -6,36 +10,9 @@
     register = "unnamedplus";
   };
 
-  colorscheme = "tokyonight";
-  colorschemes = {
-    tokyonight.enable = true;
-    oxocarbon.enable = true;
-    rose-pine.enable = true;
-    catppuccin.enable = true;
-    base16 = {
-      enable = true;
-      settings = {
-        colorscheme = {
-          base00 = "#11121D";
-          base01 = "#ffffff";
-          base02 = "#3ddbd9";
-          base03 = "#78a9ff";
-          base04 = "#33b1ff";
-          base05 = "#262626";
-          base06 = "#ee5396";
-          base07 = "#393939";
-          base08 = "#42be65";
-          base09 = "#dde1e6";
-          base0A = "#be95ff";
-          base0B = "#ffffff";
-          base0C = "#ff7eb6";
-          base0D = "#82cfff";
-          base0E = "#f2f4f8";
-          base0F = "#08bdba";
-        };
-      };
-    };
-  };
+  colorscheme = config.khanelivim.ui.theme;
+  colorschemes.catppuccin.enable = config.khanelivim.ui.theme == "catppuccin";
+  colorschemes.nord.enable = config.khanelivim.ui.theme == "nord";
   luaLoader.enable = true;
 
   globals = {
@@ -85,6 +62,7 @@
 
     # Mouse
     mouse = "a";
+    mousemodel = "extend"; # Right-click extends selection
 
     # Search
     incsearch = true;
