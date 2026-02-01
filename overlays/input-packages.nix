@@ -1,6 +1,4 @@
-{ flake }:
-_final: prev:
-let
+{flake}: _final: prev: let
   nixpkgs-master-packages = import flake.inputs.nixpkgs-master {
     inherit (prev.stdenv) system;
     overlays = [
@@ -11,11 +9,12 @@ let
       allowAliases = false;
     };
   };
-  nvim = flake.neovim-nightly-overlay.packages.${prev.stdenv.system};
+  neovim-unwrapped = flake.inputs.neovim-nightly-overlay.packages.${prev.stdenv.system}.default;
   inherit (nixpkgs-master-packages) luaPackages vimPlugins;
-in
-{
-  inherit (nixpkgs-master-packages)
+in {
+  inherit
+    (nixpkgs-master-packages)
+    neovim-unwrapped
     claude-code
     github-copilot-cli
     opencode
@@ -23,22 +22,24 @@ in
     swift
     ;
 
-  luaPackages = luaPackages // {
-    #
-    # Specific package overlays need to go in here to not get ignored
-    #
-    fzf-lua = luaPackages.fzf-lua.override {
-      doCheck = false;
-    };
+  luaPackages =
+    luaPackages
+    // {
+      #
+      # Specific package overlays need to go in here to not get ignored
+      #
+      fzf-lua = luaPackages.fzf-lua.override {
+        doCheck = false;
+      };
 
-    grug-far-nvim = luaPackages.grug-far-nvim.override {
-      doCheck = false;
-    };
+      grug-far-nvim = luaPackages.grug-far-nvim.override {
+        doCheck = false;
+      };
 
-    neotest = luaPackages.neotest.override {
-      doCheck = false;
+      neotest = luaPackages.neotest.override {
+        doCheck = false;
+      };
     };
-  };
 
   vimPlugins = vimPlugins.extend (
     _self: super: {
