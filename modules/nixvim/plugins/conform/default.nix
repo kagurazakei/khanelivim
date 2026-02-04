@@ -11,6 +11,7 @@
 
       autoInstall = {
         enable = true;
+        enableWarnings = false;
         overrides = {
           swift_format = lib.mkIf pkgs.stdenv.hostPlatform.isLinux null;
         };
