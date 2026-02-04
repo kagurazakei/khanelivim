@@ -35,12 +35,9 @@
     allow-import-from-derivation = false;
   };
 
-  outputs = inputs: let
-    overlays = [
-      inputs.neovim-nightly-overlay.overlays.default
-    ];
-  in
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-linux"
         "x86_64-linux"

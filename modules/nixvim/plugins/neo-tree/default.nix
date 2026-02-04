@@ -1,8 +1,6 @@
-{ config, lib, ... }:
-{
-  # TODO:https://github.com/GustavEikaas/easy-dotnet.nvim?tab=readme-ov-file#integrating-with-neo-tree
+_: {
   plugins.neo-tree = {
-    enable = config.khanelivim.editor.fileManager == "neo-tree";
+    enable = true;
 
     lazyLoad.settings.cmd = [ "Neotree" ];
 
@@ -37,15 +35,19 @@
     };
   };
 
-  keymaps = lib.mkIf config.plugins.neo-tree.enable [
+  keymaps = [
     {
       mode = "n";
-      key = "<leader>E";
-      action = "<cmd>Neotree action=focus reveal toggle<CR>";
+      key = "<C-n>";
+      action = "<cmd>Neotree left toggle<CR>";
       options = {
         desc = "Explorer toggle";
       };
     }
   ];
 
+  plugins.neocord = {
+    enable = true;
+    lazyLoad.settings.cmd = [ "Neocord" ];
+  };
 }

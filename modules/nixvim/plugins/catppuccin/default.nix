@@ -6,8 +6,8 @@
       # and better contrast selected tabs
       highlights =
         let
-          commonBgColor = "#11121d";
-          commonFgColor = "#1e1e2e";
+          commonBgColor = "#1e1e2e";
+          commonFgColor = "#11121d";
 
           commonSelectedAttrs = {
             bg = commonBgColor;
@@ -134,7 +134,7 @@
 
       show_end_of_buffer = true;
       term_colors = true;
-      transparent_background = false;
+      transparent_background = true;
     };
   };
 }

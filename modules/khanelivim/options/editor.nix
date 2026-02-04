@@ -3,8 +3,13 @@
   options.khanelivim.editor = {
     # keep-sorted start block=yes newline_separated=yes
     autopairs = lib.mkOption {
-      type = lib.types.nullOr (lib.types.enum [ "mini-pairs" ]);
-      default = "mini-pairs";
+      type = lib.types.nullOr (
+        lib.types.enum [
+          "blink-pairs"
+          "mini-pairs"
+        ]
+      );
+      default = "blink-pairs";
       description = "Auto-pairing plugin to use";
     };
 

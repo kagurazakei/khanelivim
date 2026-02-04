@@ -27,7 +27,8 @@
           "BlinkIndentRed"
           "BlinkIndentOrange"
           "BlinkIndentYellow"
-          "BlinkIndentCyan"
+          "BlinkIndentGreen"
+
         ];
       };
     };

@@ -25,7 +25,7 @@
   ];
 
   plugins.mini-indentscope = lib.mkIf (config.khanelivim.ui.indentGuides == "mini-indentscope") {
-    enable = false;
+    enable = true;
   };
 
   keymaps = lib.mkIf (config.khanelivim.ui.indentGuides == "mini-indentscope") [

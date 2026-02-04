@@ -9,7 +9,7 @@
           "mini-animate"
         ]
       );
-      default = "snacks";
+      default = "mini-animate";
       description = "Animation plugin for UI transitions (mutually exclusive)";
     };
 
@@ -69,7 +69,7 @@
         "noice"
         "snacks"
       ];
-      default = "noice";
+      default = "snacks";
       description = "Notification system to use (mutually exclusive)";
     };
 
@@ -127,7 +127,7 @@
         "nord"
         "tokyonight"
       ];
-      default = "tokyonight";
+      default = "catppuccin";
       description = "Colorscheme/theme to use";
     };
 

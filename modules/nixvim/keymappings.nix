@@ -8,7 +8,6 @@
     mapleader = " ";
     maplocalleader = " ";
   };
-
   keymaps =
     let
       normal =
@@ -126,7 +125,7 @@
                   expr = true;
                 };
               };
-              "<Leader>qi" = {
+              "<Leader>q" = {
                 action = "<Cmd>confirm q<CR>";
                 options = {
                   desc = "Quit";
@@ -165,7 +164,7 @@
                   desc = "Vertical split";
                 };
               };
-              "vs" = {
+              "-" = {
                 action = "<Cmd>split<CR>";
                 options = {
                   desc = "Horizontal split";
@@ -178,7 +177,19 @@
                   desc = "Next buffer";
                 };
               };
+              "<TAB>" = {
+                action = "<cmd>bnext<CR>";
+                options = {
+                  desc = "Next buffer (default)";
+                };
+              };
               "<leader>b[" = {
+                action = "<cmd>bprevious<CR>";
+                options = {
+                  desc = "Previous buffer";
+                };
+              };
+              "<S-TAB>" = {
                 action = "<cmd>bprevious<CR>";
                 options = {
                   desc = "Previous buffer";

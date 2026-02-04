@@ -3,7 +3,8 @@
   lib,
   self,
   ...
-}: {
+}:
+{
   imports = [
     ./apps
     ./nixvim.nix
@@ -26,21 +27,23 @@
     formatter = "dev";
   };
 
-  perSystem = {
-    config,
-    system,
-    ...
-  }: {
-    _module.args.pkgs = import inputs.nixpkgs {
-      inherit system;
-      overlays = lib.attrValues self.overlays;
-      config = {
-        allowUnfree = true;
-        # FIXME: breaks git-hooks-nix installation
-        # allowAliases = false;
+  perSystem =
+    {
+      config,
+      system,
+      ...
+    }:
+    {
+      _module.args.pkgs = import inputs.nixpkgs {
+        inherit system;
+        overlays = lib.attrValues self.overlays;
+        config = {
+          allowUnfree = true;
+          # FIXME: breaks git-hooks-nix installation
+          # allowAliases = false;
+        };
       };
-    };
 
-    packages.default = config.packages.khanelivim;
-  };
+      packages.default = config.packages.khanelivim;
+    };
 }

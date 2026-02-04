@@ -15,6 +15,24 @@
       "CmdlineEnter"
     ];
     settings = {
+      sources = {
+        per_filetype = {
+          markdown = [ "nixpkgs_maintainers" ];
+        };
+        providers = {
+          nixpkgs_maintainers = {
+            module = "blink_cmp_nixpkgs_maintainers";
+            name = "nixpkgs maintainers";
+            opts = {
+              cache_lifetime = 14;
+              silent = false;
+              # Customize the `nixpkgs` source flake for fetching the maintainers list
+              # Example: "github:NixOS/nixpkgs/master"
+              nixpkgs_flake_uri = "github:NixOS/nixpkgs/nixpkgs-unstable";
+            };
+          };
+        };
+      };
       cmdline = {
         completion = {
           list.selection = {
@@ -75,7 +93,7 @@
             ];
             nix = [
               "{"
-              "};"
+              "}"
             ];
           };
         };
@@ -90,7 +108,6 @@
           auto_insert = true;
           preselect = false;
         };
-
         menu = {
           border = "rounded";
           direction_priority.__raw = ''
