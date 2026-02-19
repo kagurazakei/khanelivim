@@ -70,7 +70,7 @@
     lazyLoad.enable = config.plugins.lz-n.enable;
 
     settings = {
-      transparent = true;
+      transparent = false;
 
       # Fix nvim-notify background when using transparent background
       # Nord doesn't set NotifyBackground highlight group with transparent = true

@@ -10,7 +10,7 @@
     register = "unnamedplus";
   };
 
-  colorscheme = config.khanelivim.ui.theme;
+  colorscheme = "catppuccin";
   colorschemes.catppuccin.enable = config.khanelivim.ui.theme == "catppuccin";
   colorschemes.nord.enable = config.khanelivim.ui.theme == "nord";
   luaLoader.enable = true;
@@ -92,7 +92,8 @@
     preserveindent = true;
     linebreak = true;
     wrap = false;
-
+    winblend = 0;
+    pumblend = 0;
     # Folding
     foldlevel = 99; # Keep folds open by default
     foldcolumn = "1";

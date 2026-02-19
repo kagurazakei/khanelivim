@@ -70,7 +70,7 @@
     lazyLoad.enable = config.plugins.lz-n.enable;
 
     settings = {
-      transparent = true;
+      transparent = false;
       style = "night";
       light_style = "day";
     };

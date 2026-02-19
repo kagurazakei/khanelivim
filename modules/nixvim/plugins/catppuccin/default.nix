@@ -74,7 +74,7 @@
         percentage = 0.25;
       };
 
-      flavour = "macchiato";
+      flavour = "mocha";
 
       integrations = {
         aerial = true;
@@ -95,7 +95,7 @@
         markdown = true;
         mason = true;
         mini.enabled = true;
-
+        snacks.enabled = true;
         native_lsp = {
           enabled = true;
           virtual_text = {
@@ -134,7 +134,7 @@
 
       show_end_of_buffer = true;
       term_colors = true;
-      transparent_background = true;
+      transparent_background = false;
     };
   };
 }
