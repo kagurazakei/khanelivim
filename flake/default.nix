@@ -4,61 +4,46 @@
   self,
   ...
 }:
-
 {
-  # ------------------------
-  # Imports
-  # ------------------------
   imports = [
     ./apps
     ./nixvim.nix
     ./overlays.nix
     ./pkgs-by-name.nix
-
-    # Import partitions as a set, do NOT call it
-    (import inputs.flake-parts.flakeModules.partitions)
+    inputs.flake-parts.flakeModules.partitions
   ];
 
-  # ------------------------
-  # Partitions
-  # ------------------------
   partitions = {
     dev = {
       module = ./dev;
-
-      # If ./dev expects args, import it as a set
-      extraInputsFlake = (import ./dev { inherit inputs self lib; });
+      extraInputsFlake = ./dev;
     };
   };
 
-  # ------------------------
-  # Partitioned outputs
-  # ------------------------
+  # Specify which outputs are defined by which partitions
   partitionedAttrs = {
     checks = "dev";
     devShells = "dev";
     formatter = "dev";
   };
 
-  # ------------------------
-  # Per-system configuration
-  # ------------------------
   perSystem =
-    { config, system, ... }:
-    let
-      pkgs = import inputs.nixpkgs {
+    {
+      config,
+      system,
+      ...
+    }:
+    {
+      _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         overlays = lib.attrValues self.overlays;
         config = {
           allowUnfree = true;
-          # allowAliases = false; # Uncomment if needed
+          # FIXME: breaks git-hooks-nix installation
+          # allowAliases = false;
         };
       };
-    in
-    {
-      _module.args.pkgs = pkgs;
 
-      # Reference your main package here
       packages.default = config.packages.khanelivim;
     };
 }
