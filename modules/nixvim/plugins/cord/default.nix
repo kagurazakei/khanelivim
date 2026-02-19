@@ -7,8 +7,8 @@
 
     settings = {
       display = {
-        theme = "atom";
-        flavor = "accent";
+        theme = "catppuccin";
+        flavor = "dark";
       };
       editor.tooltip = "Neovim";
       timestamp.reset_on_idle = true;
