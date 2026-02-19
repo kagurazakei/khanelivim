@@ -41,6 +41,13 @@
             }
             {
               pane = 2;
+              section = "terminal";
+              cmd = "colorscript -e square";
+              height = 5;
+              padding = 2;
+            }
+            {
+              pane = 2;
               icon = " ";
               desc = "Browse Repo";
               padding = 1;
